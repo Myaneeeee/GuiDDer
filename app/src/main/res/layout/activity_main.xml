@@ -9,7 +9,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
-    android:paddingVertical="100dp"
+    android:paddingVertical="20dp"
     tools:context=".MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
