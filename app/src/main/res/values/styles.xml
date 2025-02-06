@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 2. Primary Button Style -->
+    <style name="GuiDDerButton" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/surface</item>
+        <item name="strokeColor">@color/primary</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cornerRadius">7dp</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- 3. Secondary Button (Outline) -->
+    <style name="GuiDDerButton.Outlined" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/surface</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="strokeColor">@color/primary</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cornerRadius">7dp</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- 4. EditText  -->
+    <style name="GuiDDerEditText" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:background">@drawable/custom_input</item>
+        <item name="android:textColorHint">@color/textSecondary</item>
+    </style>
+
+
+    <!-- 5. CardView -->
+    <style name="GuiDDerCard" parent="Widget.Material3.CardView.Filled">
+        <item name="android:colorBackground">@color/surface</item>
+        <item name="android:radius">12dp</item>
+        <item name="android:elevation">6dp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <!-- 6. Typography Styles -->
+    <style name="GuiDDerHeading1">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="GuiDDerHeading2">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="GuiDDerHeading3">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="GuiDDerParagraph">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <!-- 7. Switch & Checkbox -->
+    <style name="GuiDDerSwitch" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="android:thumbTint">@color/primary</item>
+        <item name="android:trackTint">@color/secondary</item>
+    </style>
+
+    <style name="GuiDDerCheckbox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/primary</item>
+    </style>
+
+    <!-- Snackbar Style -->
+    <style name="GuiDDerSnackbar" parent="Widget.Material3.Snackbar">
+        <item name="android:background">@color/primaryVariant</item>
+        <item name="android:textColor">@color/surface</item>
+    </style>
+
+    <!-- 📢 9. Dialog Box -->
+    <style name="GuiDDerDialog" parent="Theme.Material3.DayNight.Dialog">
+        <item name="android:windowBackground">@color/surface</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/GuiDDerButton</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/GuiDDerButton.Outlined</item>
+    </style>
+
+</resources>

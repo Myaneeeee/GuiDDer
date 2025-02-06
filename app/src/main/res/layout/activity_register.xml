@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    tools:context=".RegisterActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:src="@drawable/register_vector"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:textSize="40sp"
+        style="@style/GuiDDerHeading1"/>
+
+    <EditText
+        android:id="@+id/emailETRegister"
+        style="@style/GuiDDerEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/icon_email"
+        android:drawablePadding="12dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"/>
+
+    <EditText
+        android:id="@+id/usernameETRegister"
+        style="@style/GuiDDerEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/icon_person"
+        android:drawablePadding="12dp"
+        android:hint="Username"
+        android:inputType="textEmailAddress"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"/>
+
+    <EditText
+        android:id="@+id/passETRegister"
+        style="@style/GuiDDerEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/icon_lock"
+        android:drawablePadding="12dp"
+        android:hint="Password"
+        android:inputType="textPassword"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"/>
+
+    <Button
+        android:id="@+id/registerActionBtn"
+        style="@style/GuiDDerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:backgroundTint="@color/primary"
+        android:textColor="@android:color/white"
+        android:padding="12dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+
+        <Space
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/loginTV"
+            style="@style/GuiDDerParagraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account? Login here"
+            android:textColor="@color/primary"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/errorMsgTVRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/error" />
+
+</LinearLayout>

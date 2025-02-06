@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.LandingSlide4"
+    android:gravity="top|center_horizontal"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/landing_4"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        style="@style/GuiDDerHeading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Save and Share Your Favorite Places" />
+
+    <TextView
+        style="@style/GuiDDerParagraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Keep track of your favorite destinations and share them instantly with friends. Your travel memories, just a tap away!" />
+
+
+
+</LinearLayout>

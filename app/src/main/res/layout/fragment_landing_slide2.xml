@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.LandingSlide2"
+    android:gravity="top|center_horizontal"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/landing_2"
+        android:layout_marginTop="100dp"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <TextView
+        style="@style/GuiDDerHeading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discover New Places" />
+
+    <TextView
+        style="@style/GuiDDerParagraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Unlock the best travel experiences with GuiDDer. From hidden gems to iconic landmarks, let your next adventure begin!" />
+
+
+
+</LinearLayout>
