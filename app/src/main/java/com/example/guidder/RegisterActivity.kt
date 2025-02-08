@@ -2,6 +2,7 @@ package com.example.guidder
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,13 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.icon_back_arrow)
+            title = ""
+        }
+
         dbHelper = DatabaseHelper(this)
 
         binding.loginTV.setOnClickListener {
@@ -36,6 +44,7 @@ class RegisterActivity : AppCompatActivity() {
 
             if (email.isEmpty() || nama.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                binding.errorMsgTVRegister.text = "Please fill all fields"
             } else {
                 val success = dbHelper.registerUser(email, nama, password)
                 if (success) {
@@ -44,8 +53,19 @@ class RegisterActivity : AppCompatActivity() {
                     finish()
                 } else {
                     Toast.makeText(this, "Email already exists!", Toast.LENGTH_SHORT).show()
+                    binding.errorMsgTVRegister.text = "Email already exists!"
                 }
             }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

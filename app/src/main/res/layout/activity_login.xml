@@ -9,6 +9,15 @@
     android:gravity="center"
     tools:context=".LoginActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/GuiDDerToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:elevation="4dp"
+        android:gravity="top|start" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="300dp"
@@ -57,7 +66,6 @@
         android:layout_height="wrap_content"
         android:text="Login"
         android:backgroundTint="@color/primary"
-        android:textColor="@android:color/white"
         android:padding="12dp"/>
 
     <LinearLayout
@@ -75,7 +83,7 @@
             style="@style/GuiDDerParagraph"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New to GuiDDer? Register here"
+            android:text="@string/a_to_register"
             android:textColor="@color/primary"
             android:clickable="true"
             android:focusable="true"/>

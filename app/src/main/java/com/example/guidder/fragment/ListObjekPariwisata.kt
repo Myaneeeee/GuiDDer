@@ -21,7 +21,7 @@ class ListObjekPariwisata : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentListObjekPariwisataBinding.inflate(layoutInflater, container, false)
-
+        databaseHelper = DatabaseHelper(requireContext())
         setUpRecycler()
 
         return binding.root

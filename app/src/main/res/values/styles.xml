@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- 2. Primary Button Style -->
     <style name="GuiDDerButton" parent="Widget.Material3.Button">
         <item name="android:backgroundTint">@color/primary</item>
-        <item name="android:textColor">@color/surface</item>
+        <item name="android:textColor">@color/background</item>
         <item name="strokeColor">@color/primary</item>
         <item name="strokeWidth">2dp</item>
         <item name="cornerRadius">7dp</item>
@@ -15,7 +14,7 @@
 
     <!-- 3. Secondary Button (Outline) -->
     <style name="GuiDDerButton.Outlined" parent="Widget.Material3.Button">
-        <item name="android:backgroundTint">@color/surface</item>
+        <item name="android:backgroundTint">@color/background</item>
         <item name="android:textColor">@color/primary</item>
         <item name="strokeColor">@color/primary</item>
         <item name="strokeWidth">2dp</item>
@@ -85,12 +84,22 @@
         <item name="android:textColor">@color/surface</item>
     </style>
 
-    <!-- 📢 9. Dialog Box -->
+    <!-- 9. Dialog Box -->
     <style name="GuiDDerDialog" parent="Theme.Material3.DayNight.Dialog">
         <item name="android:windowBackground">@color/surface</item>
         <item name="android:textColorPrimary">@color/textPrimary</item>
         <item name="android:buttonBarPositiveButtonStyle">@style/GuiDDerButton</item>
         <item name="android:buttonBarNegativeButtonStyle">@style/GuiDDerButton.Outlined</item>
+    </style>
+
+    <!-- 10. Toolbar Box -->
+    <style name="GuiDDerToolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/background</item>
+        <item name="titleTextAppearance">@style/GuiDDerHeading2</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:contentInsetStart">0dp</item>
+        <item name="android:contentInsetEnd">0dp</item>
     </style>
 
 </resources>

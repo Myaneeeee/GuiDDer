@@ -36,7 +36,7 @@ class ObjekPariwisataAdapter(private val context: Context, private val itemList 
         holder.binding.cvObjekPariwisata.setOnClickListener {
             val intent = Intent(holder.context, DetailActivity::class.java)
             intent.putExtra("id_objek_wisata", objekPariwisata.id_objek_wisata)
-            context.startActivity(intent)
+            holder.context.startActivity(intent)
         }
     }
 

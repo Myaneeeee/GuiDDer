@@ -6,7 +6,7 @@
 <!--    </style>-->
 <!--</resources>-->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.GuiDDer" parent="Theme.Material3.Dark">
+    <style name="Theme.GuiDDer" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primaryVariant</item>
         <item name="colorSecondary">@color/secondary</item>

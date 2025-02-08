@@ -11,6 +11,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
+        android:id="@+id/logoIV"
         android:layout_width="wrap_content"
         android:layout_height="350dp"
         android:scaleType="fitCenter"

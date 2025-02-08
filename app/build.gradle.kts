@@ -5,15 +5,15 @@ plugins {
 
 android {
     namespace = "com.example.guidder"
-    compileSdk = 34
+    compileSdk = 35
     buildFeatures {
         viewBinding = true
     }
 
     defaultConfig {
         applicationId = "com.example.guidder"
-        minSdk = 34
-        targetSdk = 34
+        minSdk = 33
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

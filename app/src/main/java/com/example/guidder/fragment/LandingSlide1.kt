@@ -1,11 +1,13 @@
 package com.example.guidder.fragment
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.guidder.R
+import com.example.guidder.databinding.FragmentLandingSlide1Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +23,7 @@ class LandingSlide1 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var binding: FragmentLandingSlide1Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +37,17 @@ class LandingSlide1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_landing_slide1, container, false)
+        binding = FragmentLandingSlide1Binding.inflate(inflater, container, false)
+        val isDarkTheme = resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+
+        if (isDarkTheme) {
+            binding.logoIV.setImageResource(R.drawable.guidder_logo_dark)
+        } else {
+            binding.logoIV.setImageResource(R.drawable.guidder_logo)
+        }
+
+        return binding.root
     }
 
     companion object {

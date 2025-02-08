@@ -6,10 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingVertical="35dp"
+    android:paddingHorizontal="20dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/GuiDDerToolbar"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"/>
 
     <TextView
-        android:id="@+id/lbl"
+        android:id="@+id/welcome_lbl"
+        style="@style/GuiDDerHeading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="This is Home" />
@@ -20,6 +30,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpObjekPariwisataList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 
 </LinearLayout>
