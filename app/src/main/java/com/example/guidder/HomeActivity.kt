@@ -8,21 +8,32 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.example.guidder.adapter.ViewPagerAdapter
+import com.example.guidder.database.DatabaseHelper
 import com.example.guidder.databinding.ActivityHomeBinding
 import com.example.guidder.fragment.ListObjekPariwisata
 import com.example.guidder.session.SessionManager
+import org.json.JSONException
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var adapter: ViewPagerAdapter
     private lateinit var sessionManager: SessionManager
+    private lateinit var requestQueue: RequestQueue
+    private lateinit var databaseHelper: DatabaseHelper
     private var isDarkTheme: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
+        requestQueue = Volley.newRequestQueue(this)
+        databaseHelper = DatabaseHelper(this)
         setContentView(binding.root)
 
         sessionManager = SessionManager(this)
@@ -40,34 +51,29 @@ class HomeActivity : AppCompatActivity() {
         val username = sessionManager.getUserName()
         binding.welcomeLbl.text = "Welcome, $username"
 
-        // **Check current theme**
         isDarkTheme = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
         updateThemeIcon()
         updateLogo()
 
-        // **Theme Toggle Button Click**
         binding.themeToggleBtn.setOnClickListener {
             toggleTheme()
         }
 
-        // **ViewPager Adapter**
         adapter = ViewPagerAdapter(this)
         adapter.addFragment(ListObjekPariwisata())
 
         binding.vpObjekPariwisataList.adapter = adapter
     }
 
-    // **Create Menu (3 dots)**
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
 
-    // **Handle Menu Clicks**
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_fetch_json -> {
-                // Placeholder for Fetch JSON action
+                fetchAndStoreData()
                 return true
             }
             R.id.action_logout -> {
@@ -78,6 +84,28 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun fetchAndStoreData() {
+        val url = "https://api.npoint.io/5859f5d410aca9faa241"
+        val queue = Volley.newRequestQueue(this)
+
+        val request = JsonArrayRequest(Request.Method.GET, url, null,
+            { response ->
+                try {
+                    databaseHelper.deleteAllObjekPariwisata()
+                    databaseHelper.deleteAllFavorites()
+                    databaseHelper.insertDataFromJson(response)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            },
+            { error ->
+                error.printStackTrace()
+            }
+        )
+
+        queue.add(request)
     }
 
     private fun toggleTheme() {

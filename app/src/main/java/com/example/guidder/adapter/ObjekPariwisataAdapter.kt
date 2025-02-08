@@ -2,6 +2,7 @@ package com.example.guidder.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,13 +30,18 @@ class ObjekPariwisataAdapter(private val context: Context, private val itemList 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val objekPariwisata = itemList[position]
-        val resourceId = context.resources.getIdentifier(objekPariwisata.gambar, "drawable", context.packageName)
+        val resourceName = objekPariwisata.gambar.substringBeforeLast(".")
+        val resourceId = context.resources.getIdentifier(resourceName, "drawable", context.packageName)
+
+        if (resourceId == 0) {
+            Log.e("ObjekPariwisataAdapter", "Resource not found for name: ${objekPariwisata.gambar}")
+        }
 
         holder.binding.tvNama.text = objekPariwisata.nama
         holder.binding.ivGambar.setImageResource(resourceId)
         holder.binding.cvObjekPariwisata.setOnClickListener {
             val intent = Intent(holder.context, DetailActivity::class.java)
-            intent.putExtra("id_objek_wisata", objekPariwisata.id_objek_wisata)
+            intent.putExtra("id_objek_pariwisata", objekPariwisata.id_objek_pariwisata)
             holder.context.startActivity(intent)
         }
     }
