@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_theme"
-        android:icon="@drawable/icon_darkmode"
-        android:title="Toggle Theme"
-        app:showAsAction="always"/>
-
-    <item
         android:id="@+id/action_fetch_json"
         android:title="Fetch JSON"
         app:showAsAction="never"/>
