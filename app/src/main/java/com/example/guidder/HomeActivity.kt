@@ -9,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
@@ -19,7 +20,10 @@ import com.example.guidder.adapter.ViewPagerAdapter
 import com.example.guidder.database.DatabaseHelper
 import com.example.guidder.databinding.ActivityHomeBinding
 import com.example.guidder.databinding.FragmentListObjekPariwisataBinding
+import com.example.guidder.fragment.FavoriteFragment
 import com.example.guidder.fragment.ListObjekPariwisata
+import com.example.guidder.fragment.MapFragment
+import com.example.guidder.fragment.ProfileFragment
 import com.example.guidder.model.ObjekPariwisata
 import com.example.guidder.session.SessionManager
 import org.json.JSONException
@@ -64,8 +68,46 @@ class HomeActivity : AppCompatActivity() {
 
         adapter = ViewPagerAdapter(this)
         adapter.addFragment(ListObjekPariwisata())
+        adapter.addFragment(MapFragment())
+        adapter.addFragment(FavoriteFragment())
+        adapter.addFragment(ProfileFragment())
 
         binding.vpObjekPariwisataList.adapter = adapter
+
+        binding.bottomNavigation.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.list -> {
+                    binding.vpObjekPariwisataList.currentItem = 0
+                    true
+                }
+                R.id.map -> {
+                    binding.vpObjekPariwisataList.currentItem = 1
+                    true
+                }
+                R.id.favorite -> {
+                    binding.vpObjekPariwisataList.currentItem = 2
+                    true
+                }
+                R.id.profile -> {
+                    binding.vpObjekPariwisataList.currentItem = 3
+                    true
+                }
+                else -> false
+            }
+        }
+
+        binding.vpObjekPariwisataList.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                val menuItemId = when (position) {
+                    0 -> R.id.list
+                    1 -> R.id.map
+                    2 -> R.id.favorite
+                    3 -> R.id.profile
+                    else -> R.id.list
+                }
+                binding.bottomNavigation.selectedItemId = menuItemId
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
