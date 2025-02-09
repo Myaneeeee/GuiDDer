@@ -30,18 +30,8 @@ class DatabaseHelper(context : Context) : SQLiteOpenHelper(context, "objekpariwi
             );
         """.trimIndent()
 
-        val createFavoriteTableQuery = """
-            CREATE TABLE IF NOT EXISTS favorites (
-                id_user INTEGER NOT NULL,
-                id_objek_pariwisata INTEGER NOT NULL,
-                PRIMARY KEY (id_user, id_objek_pariwisata),
-                FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
-                FOREIGN KEY (id_objek_pariwisata) REFERENCES objekpariwisata(id_objek_pariwisata) ON DELETE CASCADE
-            );
-        """.trimIndent()
         db?.execSQL(createObjekPariwisataTableQuery)
         db?.execSQL(createUsersTableQuery)
-        db?.execSQL(createFavoriteTableQuery)
     }
 
     fun registerUser(email: String, nama: String, password: String): Boolean {
@@ -173,77 +163,6 @@ class DatabaseHelper(context : Context) : SQLiteOpenHelper(context, "objekpariwi
     fun deleteAllObjekPariwisata() {
         val db = writableDatabase
         db.execSQL("DELETE FROM objekpariwisata")
-    }
-
-    fun insertFavorite(id_user: Int, id_objek_pariwisata: Int) {
-        val db = writableDatabase
-        val query = """
-            INSERT INTO favorites (id_user, id_objek_pariwisata) 
-            VALUES (?, ?);
-        """.trimIndent()
-
-        val statement = db.compileStatement(query)
-        statement.bindLong(1, id_user.toLong())
-        statement.bindLong(2, id_objek_pariwisata.toLong())
-        statement.executeInsert()
-    }
-
-    fun deleteFavorite(id_user: Int, id_objek_pariwisata: Int) {
-        val db = writableDatabase
-        val query = """
-            DELETE FROM favorites 
-            WHERE id_user = ? AND id_objek_pariwisata = ?;
-        """.trimIndent()
-
-        val statement = db.compileStatement(query)
-        statement.bindLong(1, id_user.toLong())
-        statement.bindLong(2, id_objek_pariwisata.toLong())
-        statement.executeUpdateDelete()
-    }
-
-    fun checkFavorite(id_user: Int, id_objek_pariwisata: Int): Boolean {
-        val db = writableDatabase
-        val query = """
-            SELECT COUNT(*) FROM favorites 
-            WHERE id_user = ? AND id_objek_pariwisata = ?;
-        """.trimIndent()
-
-        val cursor = db.rawQuery(query, arrayOf(id_user.toString(), id_objek_pariwisata.toString()))
-
-        var isFavorite = false
-
-        if (cursor.moveToFirst()) {
-            isFavorite = cursor.getInt(0) > 0
-        }
-
-        cursor.close()
-        return isFavorite
-    }
-
-
-    fun getAllFavoriteFromUser(id_user: Int): List<Int> {
-        val db = writableDatabase
-        val favoriteList = mutableListOf<Int>()
-        val query = """
-            SELECT id_objek_pariwisata FROM favorites 
-            WHERE id_user = ?;
-        """.trimIndent()
-
-        val cursor = db.rawQuery(query, arrayOf(id_user.toString()))
-
-        if (cursor.moveToFirst()) {
-            do {
-                val objekWisataId = cursor.getInt(cursor.getColumnIndexOrThrow("id_objek_pariwisata"))
-                favoriteList.add(objekWisataId)
-            } while (cursor.moveToNext())
-        }
-
-        cursor.close()
-        return favoriteList
-    }
-    fun deleteAllFavorites() {
-        val db = writableDatabase
-        db.execSQL("DELETE FROM favorites")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

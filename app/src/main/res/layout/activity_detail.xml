@@ -24,12 +24,17 @@
         android:fillViewport="true"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:paddingBottom="30dp">
+        android:paddingBottom="30dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
 
             <TextView
                 android:id="@+id/namaObjekTV"
@@ -65,24 +70,34 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/favoriteBtn"
+                android:id="@+id/sendSMSBtn"
                 style="@style/GuiDDerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Add to Favorite" />
+                android:text="Share with SMS" />
 
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/sendSMSBtn"
+                android:id="@+id/editBtn"
                 style="@style/GuiDDerButton.Outlined"
+                android:text="Edit Data"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Share with SMS" />
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/deleteBtn"
+                style="@style/GuiDDerButton.Error"
+                android:text="Delete Data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </ScrollView>

@@ -5,29 +5,16 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import com.example.guidder.adapter.ObjekPariwisataAdapter
 import com.example.guidder.adapter.ViewPagerAdapter
 import com.example.guidder.database.DatabaseHelper
 import com.example.guidder.databinding.ActivityHomeBinding
-import com.example.guidder.databinding.FragmentListObjekPariwisataBinding
-import com.example.guidder.fragment.FavoriteFragment
 import com.example.guidder.fragment.ListObjekPariwisata
 import com.example.guidder.fragment.MapFragment
 import com.example.guidder.fragment.ProfileFragment
-import com.example.guidder.model.ObjekPariwisata
 import com.example.guidder.session.SessionManager
-import org.json.JSONException
-import org.json.JSONObject
 
 class HomeActivity : AppCompatActivity() {
 
@@ -69,7 +56,6 @@ class HomeActivity : AppCompatActivity() {
         adapter = ViewPagerAdapter(this)
         adapter.addFragment(ListObjekPariwisata())
         adapter.addFragment(MapFragment())
-        adapter.addFragment(FavoriteFragment())
         adapter.addFragment(ProfileFragment())
 
         binding.vpObjekPariwisataList.adapter = adapter
@@ -82,10 +68,6 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.map -> {
                     binding.vpObjekPariwisataList.currentItem = 1
-                    true
-                }
-                R.id.favorite -> {
-                    binding.vpObjekPariwisataList.currentItem = 2
                     true
                 }
                 R.id.profile -> {
@@ -101,8 +83,7 @@ class HomeActivity : AppCompatActivity() {
                 val menuItemId = when (position) {
                     0 -> R.id.list
                     1 -> R.id.map
-                    2 -> R.id.favorite
-                    3 -> R.id.profile
+                    2 -> R.id.profile
                     else -> R.id.list
                 }
                 binding.bottomNavigation.selectedItemId = menuItemId

@@ -7,5 +7,5 @@
     <color name="surface">#1E1E1E</color>
     <color name="textPrimary">#FFFFFF</color>
     <color name="textSecondary">#BDBDBD</color>
-    <color name="error">#E57373</color>
+    <color name="error">#D32F2F</color>
 </resources>

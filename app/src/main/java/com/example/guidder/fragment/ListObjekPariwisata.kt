@@ -67,7 +67,6 @@ class ListObjekPariwisata : Fragment() {
             { response ->
                 try {
                     databaseHelper.deleteAllObjekPariwisata()
-                    databaseHelper.deleteAllFavorites()
                     for (i in 0 until response.length()) {
                         val jsonObj: JSONObject = response.getJSONObject(i)
                         val id = jsonObj.getInt("id_objek_pariwisata")
