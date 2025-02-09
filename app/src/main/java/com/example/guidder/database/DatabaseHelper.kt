@@ -84,23 +84,15 @@ class DatabaseHelper(context : Context) : SQLiteOpenHelper(context, "objekpariwi
         }
     }
 
-    fun testingInsertObjekPariwisata() {
-        val query = """
-            INSERT INTO objekpariwisata (id_objek_pariwisata, nama, gambar, deskripsi, lokasi) 
-            VALUES (
-                6, 
-                'Pulau Komodo', 
-                'pulau_komodo.png', 
-                'Pulau Komodo adalah rumah bagi spesies kadal terbesar di dunia, yaitu Komodo. Terletak di Nusa Tenggara Timur, Indonesia, pulau ini merupakan bagian dari Taman Nasional Komodo yang terkenal dengan ekosistem uniknya. Selain satwa liar, Pulau Komodo juga menawarkan keindahan alam yang luar biasa, dengan pantai pasir merah muda yang langka (Pink Beach), perairan yang jernih, serta lokasi menyelam kelas dunia yang kaya akan keanekaragaman hayati laut.', 
-                '-8.5666°S 119.4902°E'
-            );
-        """.trimIndent()
-
+    fun updateUsername(id_user: Int, newUsername: String) {
         val db = writableDatabase
-        db.execSQL(query)
+        val values = ContentValues().apply {
+            put("nama", newUsername)
+        }
+        db.update("users", values, "id_user = ?", arrayOf(id_user.toString()))
         db.close()
-
     }
+
 
     fun getAllObjekPariwisata() : List<ObjekPariwisata> {
         val objekPariwisataList = arrayListOf<ObjekPariwisata>()

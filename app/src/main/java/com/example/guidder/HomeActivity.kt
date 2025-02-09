@@ -153,4 +153,8 @@ class HomeActivity : AppCompatActivity() {
             binding.logoIV.setImageResource(R.drawable.guidder_logo)
         }
     }
+
+    fun updateWelcomeText(newUsername: String) {
+        binding.welcomeLbl.text = "Welcome, $newUsername"
+    }
 }

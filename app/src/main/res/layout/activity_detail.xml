@@ -71,6 +71,18 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="Add to Favorite" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/sendSMSBtn"
+                style="@style/GuiDDerButton.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Share with SMS" />
         </LinearLayout>
 
     </ScrollView>

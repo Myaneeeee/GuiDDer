@@ -15,7 +15,6 @@ class SessionManager(context: Context) {
         private const val KEY_USER_ID = "id_user"
     }
 
-    // **Save user session**
     fun createLoginSession(id_user: Int, email: String, nama: String) {
         val editor = sharedPref.edit()
         editor.putBoolean(KEY_IS_LOGGED_IN, true)
@@ -23,6 +22,12 @@ class SessionManager(context: Context) {
         editor.putString(KEY_EMAIL, email)
         editor.putString(KEY_NAME, nama)
         editor.apply()
+    }
+    fun updateUserName(newUsername: String) {
+        sharedPref.edit().apply {
+            putString(KEY_NAME, newUsername)
+            apply()
+        }
     }
 
     fun isLoggedIn(): Boolean {
