@@ -8,31 +8,34 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.guidder.adapter.ObjekPariwisataAdapter
 import com.example.guidder.adapter.ViewPagerAdapter
 import com.example.guidder.database.DatabaseHelper
 import com.example.guidder.databinding.ActivityHomeBinding
+import com.example.guidder.databinding.FragmentListObjekPariwisataBinding
 import com.example.guidder.fragment.ListObjekPariwisata
+import com.example.guidder.model.ObjekPariwisata
 import com.example.guidder.session.SessionManager
 import org.json.JSONException
+import org.json.JSONObject
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var adapter: ViewPagerAdapter
     private lateinit var sessionManager: SessionManager
-    private lateinit var requestQueue: RequestQueue
     private lateinit var databaseHelper: DatabaseHelper
     private var isDarkTheme: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
-        requestQueue = Volley.newRequestQueue(this)
         databaseHelper = DatabaseHelper(this)
         setContentView(binding.root)
 
@@ -72,10 +75,6 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_fetch_json -> {
-                fetchAndStoreData()
-                return true
-            }
             R.id.action_logout -> {
                 sessionManager.logout()
                 startActivity(Intent(this, LoginActivity::class.java))
@@ -84,28 +83,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun fetchAndStoreData() {
-        val url = "https://api.npoint.io/5859f5d410aca9faa241"
-        val queue = Volley.newRequestQueue(this)
-
-        val request = JsonArrayRequest(Request.Method.GET, url, null,
-            { response ->
-                try {
-                    databaseHelper.deleteAllObjekPariwisata()
-                    databaseHelper.deleteAllFavorites()
-                    databaseHelper.insertDataFromJson(response)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            },
-            { error ->
-                error.printStackTrace()
-            }
-        )
-
-        queue.add(request)
     }
 
     private fun toggleTheme() {

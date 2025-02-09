@@ -178,32 +178,6 @@ class DatabaseHelper(context : Context) : SQLiteOpenHelper(context, "objekpariwi
         db.close()
     }
 
-    fun insertDataFromJson(jsonArray: JSONArray) {
-        val db = writableDatabase
-        for (i in 0 until jsonArray.length()) {
-            val jsonObj: JSONObject = jsonArray.getJSONObject(i)
-
-            val id = jsonObj.getInt("id_objek_pariwisata")
-            val nama = jsonObj.getString("nama")
-            val gambar = jsonObj.getString("gambar")
-            val deskripsi = jsonObj.getString("deskripsi")
-            val lokasi = jsonObj.getString("lokasi")
-
-            val insertQuery = """
-                INSERT INTO objekpariwisata (id_objek_pariwisata, nama, gambar, deskripsi, lokasi)
-                VALUES (?, ?, ?, ?, ?);
-            """.trimIndent()
-
-            val statement = db.compileStatement(insertQuery)
-            statement.bindLong(1, id.toLong())
-            statement.bindString(2, nama)
-            statement.bindString(3, gambar)
-            statement.bindString(4, deskripsi)
-            statement.bindString(5, lokasi)
-            statement.executeInsert()
-        }
-    }
-
     fun deleteAllObjekPariwisata() {
         val db = writableDatabase
         db.execSQL("DELETE FROM objekpariwisata")
