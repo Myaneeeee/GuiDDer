@@ -11,14 +11,23 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.guidder.database.DatabaseHelper
 import com.example.guidder.databinding.ActivityMainBinding
 import com.example.guidder.databinding.ActivityRegisterBinding
+import com.example.guidder.session.SessionManager
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var dbHelper: DatabaseHelper
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        sessionManager = SessionManager(this)
+
+        if (sessionManager.isLoggedIn()) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)

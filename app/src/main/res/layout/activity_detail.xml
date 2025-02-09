@@ -1,10 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".DetailActivity"
+    android:orientation="vertical"
+    android:paddingTop="35dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/GuiDDerToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:elevation="4dp"
+        android:gravity="top|start" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/namaObjekTV"
+                style="@style/GuiDDerHeading1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Objek Pariwisata" />
+
+            <ImageView
+                android:id="@+id/gambarIV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gunung_bromo" />
+
+            <TextView
+                android:id="@+id/deskripsiTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gunung Bromo adalah salah satu gunung berapi paling terkenal di Indonesia yang terletak di Jawa Timur, dalam kawasan Taman Nasional Bromo Tengger Semeru. Gunung ini memiliki ketinggian 2.329 meter di atas permukaan laut dan terkenal dengan pemandangan matahari terbitnya yang spektakuler. Kawahnya yang masih aktif, lautan pasir yang luas, serta latar belakang pegunungan menjadikan Bromo sebagai destinasi wisata favorit bagi para pecinta alam dan fotografi. Wisatawan dapat menikmati keindahan gunung ini dari berbagai titik pandang, seperti Bukit Penanjakan dan Bukit Kingkong, yang menawarkan panorama menakjubkan di pagi hari."
+                android:paddingTop="10dp" />
+
+            <TextView
+                android:id="@+id/lokasiTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lokasi: -7.9425°S 112.9533°E"
+                android:paddingTop="10dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/favoriteBtn"
+                style="@style/GuiDDerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Add to Favorite" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
