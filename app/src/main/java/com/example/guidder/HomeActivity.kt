@@ -14,6 +14,7 @@ import com.example.guidder.databinding.ActivityHomeBinding
 import com.example.guidder.fragment.ListObjekPariwisata
 import com.example.guidder.fragment.MapFragment
 import com.example.guidder.fragment.ProfileFragment
+import com.example.guidder.fragment.SmsFragment
 import com.example.guidder.session.SessionManager
 
 class HomeActivity : AppCompatActivity() {
@@ -56,6 +57,7 @@ class HomeActivity : AppCompatActivity() {
         adapter = ViewPagerAdapter(this)
         adapter.addFragment(ListObjekPariwisata())
         adapter.addFragment(MapFragment())
+        adapter.addFragment(SmsFragment())
         adapter.addFragment(ProfileFragment())
 
         binding.vpObjekPariwisataList.adapter = adapter
@@ -68,6 +70,10 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.map -> {
                     binding.vpObjekPariwisataList.currentItem = 1
+                    true
+                }
+                R.id.sms -> {
+                    binding.vpObjekPariwisataList.currentItem = 2
                     true
                 }
                 R.id.profile -> {
@@ -83,7 +89,8 @@ class HomeActivity : AppCompatActivity() {
                 val menuItemId = when (position) {
                     0 -> R.id.list
                     1 -> R.id.map
-                    2 -> R.id.profile
+                    2 -> R.id.sms
+                    3 -> R.id.profile
                     else -> R.id.list
                 }
                 binding.bottomNavigation.selectedItemId = menuItemId

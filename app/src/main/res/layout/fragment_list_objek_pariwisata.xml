@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp">
 
         <Button
             android:id="@+id/fetchDataBtn"
@@ -36,6 +38,6 @@
         android:id="@+id/objek_pariwisata_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"/>
+        android:paddingTop="10dp"/>
 
 </LinearLayout>

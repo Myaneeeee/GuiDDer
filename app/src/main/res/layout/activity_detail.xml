@@ -70,20 +70,8 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/sendSMSBtn"
-                style="@style/GuiDDerButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Share with SMS" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="20dp" />
-
-            <Button
                 android:id="@+id/editBtn"
-                style="@style/GuiDDerButton.Outlined"
+                style="@style/GuiDDerButton"
                 android:text="Edit Data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
