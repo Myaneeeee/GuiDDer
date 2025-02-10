@@ -150,15 +150,16 @@ class DatabaseHelper(context : Context) : SQLiteOpenHelper(context, "objekpariwi
             put("deskripsi", objekPariwisata.deskripsi)
             put("lokasi", objekPariwisata.lokasi)
         }
-        db.update("objekpariwisata", values, "id = ?", arrayOf(objekPariwisata.id_objek_pariwisata.toString()))
+        db.update("objekpariwisata", values, "id_objek_pariwisata = ?", arrayOf(objekPariwisata.id_objek_pariwisata.toString()))
         db.close()
     }
 
-    fun deleteObjekPariwisata(id_objek_pariwisata : String) {
+    fun deleteObjekPariwisata(id_objek_pariwisata: Int) {
         val db = writableDatabase
-        db.delete("item", "id = ?", arrayOf(id_objek_pariwisata))
+        db.delete("objekpariwisata", "id_objek_pariwisata = ?", arrayOf(id_objek_pariwisata.toString()))
         db.close()
     }
+
 
     fun deleteAllObjekPariwisata() {
         val db = writableDatabase

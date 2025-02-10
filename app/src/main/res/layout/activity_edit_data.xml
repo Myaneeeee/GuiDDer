@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddDataActivity"
+    tools:context=".EditDataActivity"
     android:paddingTop="35dp"
     android:orientation="vertical">
 
@@ -36,7 +36,7 @@
                 style="@style/GuiDDerHeading1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add New Objek Pariwisata" />
+                android:text="Edit Objek Pariwisata" />
 
             <TextView
                 style="@style/GuiDDerHeading2"
@@ -107,11 +107,11 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/addBtn"
+                android:id="@+id/editBtn"
                 style="@style/GuiDDerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add Data" />
+                android:text="Edit Data" />
 
 
         </LinearLayout>
