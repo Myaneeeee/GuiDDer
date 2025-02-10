@@ -5,7 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-feature android:name="android.hardware.telephony" android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GuiDDer"
         tools:targetApi="31">
+        <activity
+            android:name=".AddDataActivity"
+            android:exported="false" />
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
@@ -41,7 +47,9 @@
 
         <service android:name=".service.BackgroundService" />
 
-        <receiver android:name=".service.SmsReceiver" android:exported="true">
+        <receiver
+            android:name=".service.SmsReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>

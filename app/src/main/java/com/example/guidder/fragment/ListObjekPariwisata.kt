@@ -1,6 +1,7 @@
 package com.example.guidder.fragment
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,8 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.example.guidder.AddDataActivity
+import com.example.guidder.HomeActivity
 import com.example.guidder.R
 import com.example.guidder.adapter.ObjekPariwisataAdapter
 import com.example.guidder.database.DatabaseHelper
@@ -37,6 +40,15 @@ class ListObjekPariwisata : Fragment() {
         binding.fetchDataBtn.setOnClickListener {
             showConfirmationDialog()
         }
+
+        binding.addBtn.setOnClickListener {
+            startActivity(Intent(context, AddDataActivity::class.java))
+        }
+
+        binding.refreshBtn.setOnClickListener {
+            setUpRecycler()
+        }
+
         return binding.root
     }
 

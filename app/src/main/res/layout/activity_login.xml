@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/icon_email"
             android:drawablePadding="12dp"
-            android:hint="Email ID"
+            android:hint="Email"
             android:inputType="textEmailAddress"/>
 
         <Space

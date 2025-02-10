@@ -165,6 +165,23 @@ class DatabaseHelper(context : Context) : SQLiteOpenHelper(context, "objekpariwi
         db.execSQL("DELETE FROM objekpariwisata")
     }
 
+    fun getLatestObjekPariwisataID(): Int {
+        val db = readableDatabase
+        var latestID = -1
+
+        val query = "SELECT MAX(id_objek_pariwisata) FROM objekpariwisata"
+        val cursor = db.rawQuery(query, null)
+
+        if (cursor.moveToFirst()) {
+            latestID = cursor.getInt(0)
+        }
+
+        cursor.close()
+        db.close()
+        return latestID
+    }
+
+
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP TABLE IF EXISTS objekpariwisata")
         onCreate(db)
