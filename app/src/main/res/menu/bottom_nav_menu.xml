@@ -6,11 +6,6 @@
         android:title="List" />
 
     <item
-        android:id="@+id/map"
-        android:icon="@drawable/icon_location"
-        android:title="Map" />
-
-    <item
         android:id="@+id/sms"
         android:icon="@drawable/icon_email"
         android:title="SMS" />

@@ -12,7 +12,6 @@ import com.example.guidder.adapter.ViewPagerAdapter
 import com.example.guidder.database.DatabaseHelper
 import com.example.guidder.databinding.ActivityHomeBinding
 import com.example.guidder.fragment.ListObjekPariwisata
-import com.example.guidder.fragment.MapFragment
 import com.example.guidder.fragment.ProfileFragment
 import com.example.guidder.fragment.SmsFragment
 import com.example.guidder.session.SessionManager
@@ -56,7 +55,6 @@ class HomeActivity : AppCompatActivity() {
 
         adapter = ViewPagerAdapter(this)
         adapter.addFragment(ListObjekPariwisata())
-        adapter.addFragment(MapFragment())
         adapter.addFragment(SmsFragment())
         adapter.addFragment(ProfileFragment())
 
@@ -68,16 +66,12 @@ class HomeActivity : AppCompatActivity() {
                     binding.vpObjekPariwisataList.currentItem = 0
                     true
                 }
-                R.id.map -> {
+                R.id.sms -> {
                     binding.vpObjekPariwisataList.currentItem = 1
                     true
                 }
-                R.id.sms -> {
-                    binding.vpObjekPariwisataList.currentItem = 2
-                    true
-                }
                 R.id.profile -> {
-                    binding.vpObjekPariwisataList.currentItem = 3
+                    binding.vpObjekPariwisataList.currentItem = 2
                     true
                 }
                 else -> false
@@ -88,9 +82,8 @@ class HomeActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 val menuItemId = when (position) {
                     0 -> R.id.list
-                    1 -> R.id.map
-                    2 -> R.id.sms
-                    3 -> R.id.profile
+                    1 -> R.id.sms
+                    2 -> R.id.profile
                     else -> R.id.list
                 }
                 binding.bottomNavigation.selectedItemId = menuItemId
@@ -105,6 +98,9 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.action_map -> {
+                startActivity(Intent(this, MapActivity::class.java))
+            }
             R.id.action_logout -> {
                 sessionManager.logout()
                 startActivity(Intent(this, LoginActivity::class.java))
